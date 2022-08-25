@@ -30,9 +30,20 @@ int main()
 
     FLOG ("fileSize = %d", fileSize);
 
-    char* str = (char*) malloc (fileSize);
+    char* str = (char*) calloc (sizeof (char), fileSize + 1);
 
-    fread (str, sizeof (char), fileSize, file);
+    for (int i = 0; i < fileSize; i++)
+    {
+        FLOG ("%d", str[i]);
+    }
+
+    fseek (file, 0, SEEK_SET);
+
+    int rightRead = fread (str, sizeof (char), fileSize, file);
+
+    FLOG ("right read = %d", rightRead);
+
+    FLOG ("last str sym = '%c' = %d", str[fileSize], str[fileSize]);
 
     printf ("'%s'", str);
 
