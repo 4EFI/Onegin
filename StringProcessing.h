@@ -22,10 +22,10 @@ char StrNullPtr[] = "Pointer cannot be null!";
 #define LocCurSet() Line = __LINE__
 
 #define Assert(condition, strFail) \
-    if(!condition) \
+    if (!(condition)) \
     { \
-        printf("Line %d: condition \"%s\" is failed!\n", Line, #condition); \
-        printf("%s\n\n", strFail); \
+        printf ("Line %d: condition \"%s\" is failed!\n", Line, #condition); \
+        printf ("%s\n\n", strFail); \
     }
 
 //-----------------------------------------------------------------------------
