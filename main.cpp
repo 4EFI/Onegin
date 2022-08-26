@@ -1,19 +1,8 @@
 #include <string.h>
 
 #include "StringProcessing.h"
-#include "LOG/Log.h"
-
-//-----------------------------------------------------------------------------
-
-struct StrParams
-{
-    char* str = NULL;
-    int   len = 0;
-};
-
-//-----------------------------------------------------------------------------
-
-int GetFileStrs (FILE* file, StrParams arrStrs[]);
+#include "StrAlgorithm.h"
+#include "Log.h"
 
 //-----------------------------------------------------------------------------
 
@@ -29,17 +18,31 @@ int main()
 
     //UnitTestsFGets(unitTests, sizeof(unitTests) / sizeof(char*), "UnitTests.txt");
 
-    char fileName[] = "Onegin.bin";
+    char fileName[] = "Onegin.txt";
 
-    FILE *file = fopen (fileName, "rb");
+    FILE *file = fopen (fileName, "r");
 
-    if (file == NULL)
+    if (!file)
     {
         printf ("An error during opening file...\n");
     }
 
     StrParams* arrStrs = NULL;
-    int numStrs = GetFileStrs (file, arrStrs);
+    int numStrs = GetFileStrs (file, &arrStrs);
+
+    FLOG ("number of strings = %d", numStrs);
+
+    for (int i = 0; i < numStrs; i++)
+    {
+        RemoveLeadingSpaces (&(arrStrs[i].str), arrStrs[i].len);
+    }
+
+    BubbleSortStrings (&arrStrs, numStrs);
+
+    for (int i = 0; i < numStrs; i++)
+    {
+        LOG ("%d) '%s'", i + 1, arrStrs[i].str);
+    }
 
     fclose (file);
 
@@ -48,70 +51,4 @@ int main()
 
 //-----------------------------------------------------------------------------
 
-int GetFileStrs (FILE* file, StrParams arrStrs[])
-{
-    $LOG_LVL_UP
-
-    //{ ASSERT
-    assert (file != NULL);
-    //}
-
-    fseek (file, 0, SEEK_END);
-
-    int fileSize = ftell (file);
-
-    FLOG ("fileSize = %d", fileSize);
-
-    char* str = (char*) calloc (sizeof (char), fileSize + 1);
-
-    fseek (file, 0, SEEK_SET);
-
-    int rightRead = fread (str, sizeof (char), fileSize, file);
-
-    FLOG ("right read = %d",          rightRead);
-    FLOG ("last str sym = '%c' = %d", str[fileSize], str[fileSize]);
-    FLOG ("sizeof char ** = %d",      sizeof(char**));
-
-    int numStrs = 0;
-
-    for (int i = 0; i < fileSize; i++)
-    {
-        if (str[i] == '\n')
-        {
-            numStrs++;
-        }
-    }
-
-    arrStrs = (StrParams*) calloc (sizeof (StrParams), numStrs);
-
-    int pos = 0, nowStr = 0;
-
-    for (int i = 0; i < fileSize; i++)
-    {
-        if (str[i] == '\n')
-        {
-            arrStrs[nowStr].str = &str[i - pos];
-            //+1 for '\0'
-            arrStrs[nowStr].len      = pos + 1;
-            arrStrs[nowStr].str[pos]     = '\0';
-            arrStrs[nowStr].str[pos - 1] = '\0';
-
-            pos = 0;
-            nowStr++;
-
-            continue;
-        }
-
-        pos++;
-    }
-
-    for (int i = 0; i < numStrs; i++)
-    {
-        LOG ("%d) '%s'", i + 1, arrStrs[i].str);
-    }
-
-    return numStrs;
-}
-
-//-----------------------------------------------------------------------------
 
