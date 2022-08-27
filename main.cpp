@@ -27,14 +27,22 @@ int main()
         printf ("An error during opening file...\n");
     }
 
-    StrParams* arrStrs = NULL;
-    int numStrs = GetFileStrs (file, &arrStrs);
+    char* str = NULL;
 
-    FLOG ("number of strings = %d", numStrs);
+    int strSize = GetFileStr (file, &str);
+
+    StrParams* arrStrs = NULL;
+    int numStrs = DivideStr (str, &arrStrs);
 
     for (int i = 0; i < numStrs; i++)
     {
-        RemoveLeadingSpaces (&(arrStrs[i].str), arrStrs[i].len);
+        LOG ("%d) '%s'", i + 1, arrStrs[i].str);
+    }
+
+    for (int i = 0; i < numStrs; i++)
+    {
+        RemoveIgnoredSyms (&arrStrs[i].str, 0,                  arrStrs[i].len - 1);
+        RemoveIgnoredSyms (&arrStrs[i].str, arrStrs[i].len - 1, 0);
     }
 
     BubbleSortStrings (&arrStrs, numStrs);

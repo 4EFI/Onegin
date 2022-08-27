@@ -7,48 +7,29 @@
 #include <assert.h>
 #include <algorithm>
 
+const char IgnoredSymbols[] = " .!?:;-";
+
 //-----------------------------------------------------------------------------
 
-int GetFileStrs (FILE* file, StrParams* arrStrs[])
+int DivideStr (char* str, StrParams* arrStrs[])
 {
     $LOG_LVL_UP
 
     //{ ASSERT
-    assert (file != NULL);
+    assert (str != NULL);
     //}
 
-    fseek (file, 0, SEEK_END);
+    int numStrs = GetNumStrs (str);
 
-    int fileSize = ftell (file);
-
-    FLOG ("fileSize = %d", fileSize);
-
-    char* str = (char*) calloc (sizeof (char), fileSize + 1);
-
-    fseek (file, 0, SEEK_SET);
-
-    int rightRead = fread (str, sizeof (char), fileSize, file);
-
-    FLOG ("right read = %d",          rightRead);
-    FLOG ("last str sym = '%c' = %d", str[fileSize], str[fileSize]);
-    FLOG ("sizeof char ** = %d",      sizeof(char**));
-
-    int numStrs = 0;
-
-    for (int i = 0; i < fileSize; i++)
-    {
-        if (str[i] == '\n') numStrs++;
-    }
-
-    FLOG ("num strings = %d", numStrs);
+    int strLen = strlen (str);
 
     *arrStrs = (StrParams*) calloc (sizeof (StrParams), numStrs);
 
     int pos = 0, nowStr = 0;
 
-    for (int i = 0; i < fileSize; i++)
+    for (int i = 0; i <= strLen; i++)
     {
-        if (str[i] == '\n')
+        if (str[i] == '\n' || str[i] == '\0')
         {
             (*arrStrs)[nowStr].str      = &str[i - pos];
             //+1 for '\0'
@@ -65,33 +46,154 @@ int GetFileStrs (FILE* file, StrParams* arrStrs[])
     }
 
     return numStrs;
+
 }
 
 //-----------------------------------------------------------------------------
 
-int RemoveLeadingSpaces (char** str, int strLen)
+int GetNumStrs (char *str)
 {
-    int  numLeadingSpaces = 0;
+    $LOG_LVL_UP
 
-    for (int i = 0; i < strLen; i++)
+    //{ ASSERT
+    assert (str != NULL);
+    //}
+
+    int numStrs = 0;
+
+    int strLen = strlen (str);
+
+    for (int i = 0; i <= strLen; i++)
     {
-        if ((*str)[i] == ' ')
-        {
-            numLeadingSpaces++;
-        }
-        else
-        {
-            *str += numLeadingSpaces;
+        if (str[i] == '\n' || str[i] == '\0') numStrs++;
+    }
 
-            return numLeadingSpaces;
+    return numStrs;
+}
+
+//-----------------------------------------------------------------------------
+
+int GetFileStr (FILE* file, char** str)
+{
+    $LOG_LVL_UP
+
+    //{ ASSERT
+    assert (file != NULL);
+    assert (str  != NULL);
+    //}
+
+    int fileSize = GetFileSize (file);
+
+    *str = (char*) calloc (sizeof (char), fileSize + 1);
+
+    int rightRead = fread (*str, sizeof (char), fileSize, file);
+
+    FillStr (*str, rightRead, fileSize - 1, '\0');
+
+    return fileSize;
+}
+
+//-----------------------------------------------------------------------------
+
+void FillStr (char* str, int iBeginStr, int iEndStr, char sym)
+{
+    $LOG_LVL_UP
+
+    //{ ASSERT
+    assert (str != NULL);
+    //}
+
+    int len = strlen (str);
+
+    for (int i = iBeginStr; i <= iEndStr; i++)
+    {
+        str[i] = sym;
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+int GetFileSize (FILE* file)
+{
+    $LOG_LVL_UP
+
+    //{ ASSERT
+    assert (file != NULL);
+    //}
+
+    fseek (file, 0, SEEK_END);
+
+    int fileSize = ftell (file);
+
+    FLOG ("fileSize = %d", fileSize);
+
+    fseek (file, 0, SEEK_SET);
+
+    return fileSize;
+}
+
+//-----------------------------------------------------------------------------
+
+int RemoveIgnoredSyms (char** str, int iBegin, int iEnd)
+{
+    //{ ASSERT
+    assert ( str != NULL);
+    assert (*str != NULL);
+    //}
+
+    bool isBegin = ( (iBegin < iEnd) ? true : false );
+
+    int numIgnoredSyms = 0;
+
+    int len = strlen (IgnoredSymbols);
+
+    bool isWord = true;
+
+    for (int i = (isBegin) ? iBegin    : iEnd;
+                 (isBegin) ? i <= iEnd : i >= iBegin;
+                 (isBegin) ? i++       : i--)
+    {
+        LOG ("i = %d", i);
+
+        isWord = true;
+
+        for (int curIgnoredSym = 0; curIgnoredSym < len; curIgnoredSym++)
+        {
+            if ((*str)[i] == IgnoredSymbols[curIgnoredSym])
+            {
+                numIgnoredSyms++;
+
+                isWord = false;
+                break;
+            }
+        }
+
+        if (isWord)
+        {
+            if (isBegin)
+            {
+                *str = *str + iBegin + numIgnoredSyms;
+            }
+            else
+            {
+                *str = *str + iEnd   - numIgnoredSyms;
+
+                LOG ("");
+            }
+
+            break;
         }
     }
+
+    return numIgnoredSyms;
 }
 
 //-----------------------------------------------------------------------------
 
 void BubbleSortStrings (StrParams* arrStrs[], int numStrs)
 {
+    int numIgnoredSyms = 0;
+
     for (int i = 0; i < numStrs; i++)
     {
         for (int j = 0; j < numStrs - i - 1; j++)
@@ -103,3 +205,6 @@ void BubbleSortStrings (StrParams* arrStrs[], int numStrs)
         }
     }
 }
+
+//-----------------------------------------------------------------------------
+

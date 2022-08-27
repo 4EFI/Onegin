@@ -13,13 +13,17 @@ struct StrParams
 
 //-----------------------------------------------------------------------------
 
-int GetFileStrs (FILE* file, StrParams* arrStrs[]);
+int DivideStr (char* str, StrParams* arrStrs[]);
 
-//-----------------------------------------------------------------------------
+int GetFileStr (FILE* file, char **str);
 
-int RemoveLeadingSpaces (char** str, int strLen);
+int GetNumStrs (char *str);
 
-//-----------------------------------------------------------------------------
+void FillStr (char* str, int iBeginStr, int iEndStr, char sym);
+
+int GetFileSize (FILE* file);
+
+int RemoveIgnoredSyms (char** str, int iBegin, int iEnd);
 
 void BubbleSortStrings (StrParams* arrStrs[], int numStrs);
 
