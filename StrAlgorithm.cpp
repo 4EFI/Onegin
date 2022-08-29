@@ -7,11 +7,9 @@
 #include <assert.h>
 #include <algorithm>
 
-const char IgnoredSymbols[] = " .!?:;-";
-
 //-----------------------------------------------------------------------------
 
-int DivideStr (char* str, StrParams* arrStrs[])
+int DivideStr (char* str, StrParams** arrStrs)
 {
     $LOG_LVL_UP
 
@@ -21,19 +19,21 @@ int DivideStr (char* str, StrParams* arrStrs[])
 
     int numStrs = GetNumStrs (str);
 
-    int strLen = strlen (str);
-
     *arrStrs = (StrParams*) calloc (sizeof (StrParams), numStrs);
 
     int pos = 0, nowStr = 0;
 
-    for (int i = 0; i <= strLen; i++)
+    for (int i = 0; ; i++)
     {
         if (str[i] == '\n' || str[i] == '\0')
         {
-            (*arrStrs)[nowStr].str      = &str[i - pos];
-            //+1 for '\0'
-            (*arrStrs)[nowStr].len      = pos + 1;
+            (*arrStrs)[nowStr].str = &str[i - pos];
+            // +1 for '\0'
+            (*arrStrs)[nowStr].len = pos + 1;
+
+            // If end of str
+            if (str[i] == '\0') break;
+
             (*arrStrs)[nowStr].str[pos] = '\0';
 
             pos = 0;
@@ -46,12 +46,11 @@ int DivideStr (char* str, StrParams* arrStrs[])
     }
 
     return numStrs;
-
 }
 
 //-----------------------------------------------------------------------------
 
-int GetNumStrs (char *str)
+int GetNumStrs (const char *str)
 {
     $LOG_LVL_UP
 
@@ -61,11 +60,18 @@ int GetNumStrs (char *str)
 
     int numStrs = 0;
 
-    int strLen = strlen (str);
+    // while (str[i] != '\0')
 
-    for (int i = 0; i <= strLen; i++)
+    // if (str[i] == '\n')
+
+    for (int i = 0; ; i++)
     {
-        if (str[i] == '\n' || str[i] == '\0') numStrs++;
+        if (str[i] == '\n' || str[i] == '\0')
+        {
+            numStrs++;
+
+            if (str[i] == '\0') break;
+        }
     }
 
     return numStrs;
@@ -73,7 +79,9 @@ int GetNumStrs (char *str)
 
 //-----------------------------------------------------------------------------
 
-int GetFileStr (FILE* file, char** str)
+// ReadFile
+
+int ReadAllFile (FILE* file, char** str)
 {
     $LOG_LVL_UP
 
@@ -88,32 +96,16 @@ int GetFileStr (FILE* file, char** str)
 
     int rightRead = fread (*str, sizeof (char), fileSize, file);
 
-    FillStr (*str, rightRead, fileSize - 1, '\0');
+    realloc ( str, sizeof (char) * (rightRead + 1) ); // Windows specific, \r remove
 
-    return fileSize;
+    (*str)[rightRead] = '\0';
+
+    return rightRead;
 }
 
 //-----------------------------------------------------------------------------
 
-void FillStr (char* str, int iBeginStr, int iEndStr, char sym)
-{
-    $LOG_LVL_UP
-
-    //{ ASSERT
-    assert (str != NULL);
-    //}
-
-    int len = strlen (str);
-
-    for (int i = iBeginStr; i <= iEndStr; i++)
-    {
-        str[i] = sym;
-    }
-}
-
-//-----------------------------------------------------------------------------
-
-int GetFileSize (FILE* file)
+int GetFileSize (FILE* file) //fstat
 {
     $LOG_LVL_UP
 
@@ -121,86 +113,115 @@ int GetFileSize (FILE* file)
     assert (file != NULL);
     //}
 
+    int curPos = ftell (file);
+
     fseek (file, 0, SEEK_END);
 
     int fileSize = ftell (file);
 
-    FLOG ("fileSize = %d", fileSize);
+    fseek (file, curPos, SEEK_SET);
 
-    fseek (file, 0, SEEK_SET);
+    FLOG ("fileSize = %d", fileSize);
 
     return fileSize;
 }
 
 //-----------------------------------------------------------------------------
 
-int RemoveIgnoredSyms (char** str, int iBegin, int iEnd)
+// str_ptr
+int TrimLeftIgnoredSyms (char** str, const char *ignoredSymbols)
 {
-    //{ ASSERT
-    assert ( str != NULL);
-    assert (*str != NULL);
-    //}
+    $LOG_LVL_UP
 
-    bool isBegin = ( (iBegin < iEnd) ? true : false );
+    //{ ASSERT
+    assert ( str           != NULL);
+    assert (*str           != NULL);
+    assert (ignoredSymbols != NULL);
+    //}
 
     int numIgnoredSyms = 0;
 
-    int len = strlen (IgnoredSymbols);
+    // char* str = *str_ptr;
 
-    bool isWord = true;
-
-    for (int i = (isBegin) ? iBegin    : iEnd;
-                 (isBegin) ? i <= iEnd : i >= iBegin;
-                 (isBegin) ? i++       : i--)
+    for (int i = 0; ; i++)
     {
-        LOG ("i = %d", i);
+        // If end of str
+        if ((*str)[i] == '\0') break;
 
-        isWord = true;
+        if ( !strchr (ignoredSymbols, (*str)[i]) ) break;
 
-        for (int curIgnoredSym = 0; curIgnoredSym < len; curIgnoredSym++)
-        {
-            if ((*str)[i] == IgnoredSymbols[curIgnoredSym])
-            {
-                numIgnoredSyms++;
-
-                isWord = false;
-                break;
-            }
-        }
-
-        if (isWord)
-        {
-            if (isBegin)
-            {
-                *str = *str + iBegin + numIgnoredSyms;
-            }
-            else
-            {
-                *str = *str + iEnd   - numIgnoredSyms;
-
-                LOG ("");
-            }
-
-            break;
-        }
+        numIgnoredSyms++;
     }
+
+   *str += numIgnoredSyms;
 
     return numIgnoredSyms;
 }
 
 //-----------------------------------------------------------------------------
 
-void BubbleSortStrings (StrParams* arrStrs[], int numStrs)
+// char**??
+int TrimRightIgnoredSyms (char **str, const char *ignoredSymbols)
 {
-    int numIgnoredSyms = 0;
+    $LOG_LVL_UP
 
+    //{ ASSERT
+    assert ( str           != NULL);
+    assert (*str           != NULL);
+    assert (ignoredSymbols != NULL);
+    //}
+
+    int lenStr = 0, lastStr = 0;
+
+    for (int i = 0; ; i++)
+    {
+        // If end of str
+        if ((*str)[i] == '\0') break;
+
+        if ( !strchr (ignoredSymbols, (*str)[i]) )
+        {
+            lastStr = i;
+        }
+
+        lenStr++;
+    }
+
+    int numIgnoredSyms = lenStr - (lastStr + 1);
+
+    (*str)[lenStr - numIgnoredSyms] = '\0';
+
+    return numIgnoredSyms;
+}
+
+//-----------------------------------------------------------------------------
+
+void TrimStrings (StrParams arrStrs[], int numStrs, const char* ignoredSymbols)
+{
+    $LOG_LVL_UP
+
+    //{ ASSERT
+    assert (arrStrs        != NULL);
+    assert (ignoredSymbols != NULL);
+    //}
+
+    for (int i = 0; i < numStrs; i++)
+    {
+        TrimLeftIgnoredSyms  (&arrStrs[i].str, ignoredSymbols);
+        TrimRightIgnoredSyms (&arrStrs[i].str, ignoredSymbols);
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+void BubbleSortStrings (StrParams arrStrs[], int numStrs)
+{
     for (int i = 0; i < numStrs; i++)
     {
         for (int j = 0; j < numStrs - i - 1; j++)
         {
-            if ((*arrStrs)[j].str[0] > (*arrStrs)[j + 1].str[0])
+            if ( strcmp (arrStrs[j].str, arrStrs[j + 1].str) > 0 )
             {
-                std::swap ((*arrStrs)[j], (*arrStrs)[j + 1]);
+                std::swap (arrStrs[j], arrStrs[j + 1]);
             }
         }
     }

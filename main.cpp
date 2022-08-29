@@ -8,6 +8,7 @@
 
 int main()
 {
+    /* Unit tests
     const char* unitTests[] = {"Vlados\n",
                                "Sanya\n",
                                "Ded32\n",
@@ -16,9 +17,11 @@ int main()
                                "0123456789012345678901234567890123456789012345678901234567890123#"};
 
 
-    //UnitTestsFGets(unitTests, sizeof(unitTests) / sizeof(char*), "UnitTests.txt");
+    UnitTestsFGets(unitTests, sizeof(unitTests) / sizeof(char*), "UnitTests.txt");
+    */
 
-    char fileName[] = "Onegin.txt";
+
+    char fileName[] = "Hamlet.txt";
 
     FILE *file = fopen (fileName, "r");
 
@@ -29,27 +32,21 @@ int main()
 
     char* str = NULL;
 
-    int strSize = GetFileStr (file, &str);
+    ReadAllFile (file, &str);
 
     StrParams* arrStrs = NULL;
     int numStrs = DivideStr (str, &arrStrs);
 
+    TrimStrings (arrStrs, numStrs);
+
+    BubbleSortStrings (arrStrs, numStrs);
+
+    FILE* fileOut = fopen ("_.txt", "w");
+
+    // print_lines()
     for (int i = 0; i < numStrs; i++)
     {
-        LOG ("%d) '%s'", i + 1, arrStrs[i].str);
-    }
-
-    for (int i = 0; i < numStrs; i++)
-    {
-        RemoveIgnoredSyms (&arrStrs[i].str, 0,                  arrStrs[i].len - 1);
-        RemoveIgnoredSyms (&arrStrs[i].str, arrStrs[i].len - 1, 0);
-    }
-
-    BubbleSortStrings (&arrStrs, numStrs);
-
-    for (int i = 0; i < numStrs; i++)
-    {
-        LOG ("%d) '%s'", i + 1, arrStrs[i].str);
+        fprintf (fileOut, "%d) '%s'\n", i + 1, arrStrs[i].str);
     }
 
     fclose (file);

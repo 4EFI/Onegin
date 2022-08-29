@@ -5,27 +5,35 @@
 
 //-----------------------------------------------------------------------------
 
+// StrParams str = {0};
 struct StrParams
 {
-    char* str = NULL;
+    char* str = NULL; // C++??
     int   len = 0;
 };
 
 //-----------------------------------------------------------------------------
 
-int DivideStr (char* str, StrParams* arrStrs[]);
+const char IgnoredSymbols[] = " .,()[]{}<>\\/|~`!?:;-";
 
-int GetFileStr (FILE* file, char **str);
+//-----------------------------------------------------------------------------
 
-int GetNumStrs (char *str);
+int DivideStr (char* str, StrParams** arrStrs);
 
-void FillStr (char* str, int iBeginStr, int iEndStr, char sym);
+int ReadAllFile (FILE* file, char **str);
+
+int GetNumStrs (const char *str);
 
 int GetFileSize (FILE* file);
 
+int TrimLeftIgnoredSyms  (char** str, const char *ignoredSymbols = IgnoredSymbols);
+int TrimRightIgnoredSyms (char** str, const char *ignoredSymbols = IgnoredSymbols);
+
+void TrimStrings (StrParams arrStrs[], int numStrs, const char *ignoredSymbols = IgnoredSymbols);
+
 int RemoveIgnoredSyms (char** str, int iBegin, int iEnd);
 
-void BubbleSortStrings (StrParams* arrStrs[], int numStrs);
+void BubbleSortStrings (StrParams arrStrs[], int numStrs);
 
 //-----------------------------------------------------------------------------
 
