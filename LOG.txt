@@ -141,3 +141,7 @@ End of Log!
 End of Log!
 02|         src/StrAlgorithm.cpp:126: fileSize = 13
 End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+00| src/main.cpp:38: ..vlad
+ab...
+End of Log!

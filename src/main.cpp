@@ -8,6 +8,8 @@
 
 int main()
 {
+    printf ("hh\n");
+
     /* Unit tests
     const char* unitTests[] = {"Vlados\n",
                                "Sanya\n",

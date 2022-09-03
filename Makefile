@@ -18,7 +18,7 @@ LOG_OBJ = $(patsubst $(LOG_SRC_DIR)%.cpp, $(LOG_OBJ_DIR)%.o, $(LOG_SRC))
 
 #linking
 all : $(OBJ) $(LOG_OBJ) 
-	$(CC) $^ -o main
+	$(CC) $^ -o main.exe
 
 #main
 $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp
