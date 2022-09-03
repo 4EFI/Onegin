@@ -1,8 +1,8 @@
 #include <string.h>
 
-#include "StringProcessing.h"
-#include "StrAlgorithm.h"
-#include "Log.h"
+#include "../include/StringProcessing.h"
+#include "../include/StrAlgorithm.h"
+#include "../LOG/LOG.h"
 
 //-----------------------------------------------------------------------------
 
@@ -19,7 +19,6 @@ int main()
 
     UnitTestsFGets(unitTests, sizeof(unitTests) / sizeof(char*), "UnitTests.txt");
     */
-
 
     char fileName[] = "Hamlet.txt";
 

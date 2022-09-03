@@ -1,5 +1,7 @@
-#include "StrAlgorithm.h"
-#include "Log.h"
+//#define NLOG
+
+#include "../include/StrAlgorithm.h"
+#include "../LOG/LOG.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,6 +37,11 @@ int DivideStr (char* str, StrParams** arrStrs)
             if (str[i] == '\0') break;
 
             (*arrStrs)[nowStr].str[pos] = '\0';
+            // If \r
+            if (pos > 0 && (*arrStrs)[nowStr].str[pos - 1] == '\r')
+            {
+                (*arrStrs)[nowStr].str[pos - 1] = '\0';
+            }
 
             pos = 0;
             nowStr++;
@@ -60,10 +67,6 @@ int GetNumStrs (const char *str)
 
     int numStrs = 0;
 
-    // while (str[i] != '\0')
-
-    // if (str[i] == '\n')
-
     for (int i = 0; ; i++)
     {
         if (str[i] == '\n' || str[i] == '\0')
@@ -83,10 +86,10 @@ int ReadAllFile (FILE* file, char** str)
 {
     $LOG_LVL_UP
 
-    //{ ASSERT
+    // ASSERT
     assert (file != NULL);
     assert (str  != NULL);
-    //}
+    //
 
     int fileSize = GetFileSize (file);
 
@@ -94,7 +97,8 @@ int ReadAllFile (FILE* file, char** str)
 
     int rightRead = fread (*str, sizeof (char), fileSize, file);
 
-    realloc ( str, sizeof (char) * (rightRead + 1) ); // Windows specific, \r remove
+    if (rightRead < fileSize)
+        *str = (char*) realloc ( str, sizeof (char) * (rightRead + 1) ); // Windows specific, \r remove
 
     (*str)[rightRead] = '\0';
 
