@@ -145,3 +145,55 @@ End of Log!
 00| src/main.cpp:38: ..vlad
 ab...
 End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 13
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithm.cpp:126: fileSize = 196183
+End of Log!

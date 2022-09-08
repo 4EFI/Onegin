@@ -32,3 +32,4 @@ $(LOG_OBJ_DIR)%.o : $(LOG_SRC_DIR)%.cpp
 
 clean: 
 	rm -f $(OBJ_DIR)*.o
+	rm -f $(LOG_OBJ_DIR)*.o
