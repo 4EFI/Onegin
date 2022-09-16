@@ -1,7 +1,7 @@
 //#define NLOG
 
-#include "../include/StrAlgorithms.h"
-#include "../LOG/LOG.h"
+#include "StrAlgorithms.h"
+#include "LOG.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -82,7 +82,7 @@ int GetNumStrs (const char *str)
 
 //-----------------------------------------------------------------------------
 
-int ReadAllFile (FILE* file, char** str)
+long int ReadAllFile (FILE* file, char** str)
 {
     $LOG_LVL_UP
 
@@ -91,11 +91,11 @@ int ReadAllFile (FILE* file, char** str)
     assert (str  != NULL);
     //
 
-    int fileSize = GetFileSize (file);
+    long int fileSize = GetFileSize (file);
 
     *str = (char*) calloc (sizeof (char), fileSize + 1);
 
-    int rightRead = fread (*str, sizeof (char), fileSize, file);
+    long int rightRead = fread (*str, sizeof (char), fileSize, file);
 
     if (rightRead < fileSize)
         realloc ( str, sizeof (char) * (rightRead + 1) ); // Windows specific, \r remove
@@ -107,7 +107,7 @@ int ReadAllFile (FILE* file, char** str)
 
 //-----------------------------------------------------------------------------
 
-int GetFileSize (FILE* file) //fstat
+long int GetFileSize (FILE* file) //fstat
 {
     $LOG_LVL_UP
 
@@ -115,11 +115,11 @@ int GetFileSize (FILE* file) //fstat
     assert (file != NULL);
     //}
 
-    int curPos = ftell (file);
+    long int curPos = ftell (file);
 
     fseek (file, 0, SEEK_END);
 
-    int fileSize = ftell (file);
+    long int fileSize = ftell (file);
 
     fseek (file, curPos, SEEK_SET);
 
@@ -162,7 +162,6 @@ int TrimLeftIgnoredSyms (char** str, const char *ignoredSymbols)
 
 //-----------------------------------------------------------------------------
 
-// char**??
 int TrimRightIgnoredSyms (char **str, const char *ignoredSymbols)
 {
     $LOG_LVL_UP
@@ -215,22 +214,57 @@ void TrimStrings (StrParams arrStrs[], int numStrs, const char* ignoredSymbols)
 
 //-----------------------------------------------------------------------------
 
-void BubbleSort (void * arr, size_t numStrs, size_t size, int (*comparator)(const void * arr1, const void * arr2))
+void BubbleSort ( void * arr, size_t num, size_t size, int (*comparator)(const void * arr1, const void * arr2) )
 {
     $LOG_LVL_UP
     
-    LOG ("Arr = %lld; %lld", arr, (char*)arr);
-    
-    for (size_t i = 0; i < numStrs; i++)
+    for (size_t i = 0; i < num; i++)
     {
-        for (size_t j = 0; j < numStrs - i - 1; j++)
+        for (size_t j = 0; j < num - i - 1; j++)
         {
-            if ( comparator (arr + j * size, arr + (j + 1) * size) > 0 )
+            if ( comparator ( (char*)arr + j * size, (char*)arr + (j + 1) * size) > 0 )
             {            
-                Swap (arr + j * size, arr + (j + 1) * size, size);
+                Swap ( (char*)arr + j * size, (char*)arr + (j + 1) * size, size );
             }
         }
     }
+}
+
+//-----------------------------------------------------------------------------
+
+void QuickSort ( void * arr, size_t num, size_t size, int (*comparator)(const void * arr1, const void * arr2) )
+{
+    $LOG_LVL_UP
+    
+    size_t beginArr = 0;
+    size_t endArr   = num - 1;
+
+    void * middle = (char*)arr + (num / 2) * size;
+
+    while (beginArr <= endArr)
+    {    
+        while ( comparator ( (char*)arr + beginArr * size, middle) < 0 ) 
+        {
+            beginArr++;
+        }
+
+        while ( comparator ( (char*)arr + endArr   * size, middle) > 0 ) 
+        {
+            endArr--;
+        }
+
+        if (beginArr <= endArr) 
+        {
+            // Swap (arr[beginArr], arr[endArr])
+            Swap ( (char*)arr + beginArr * size, (char*)arr + endArr * size, size );
+
+            beginArr++;
+            endArr--;
+        }
+    } 
+
+    if (endArr   > 0      ) QuickSort ( (char*)arr,                   endArr + 1,        size, comparator );
+    if (beginArr < num - 1) QuickSort ( (char*)arr + beginArr * size, num    - beginArr, size, comparator );
 }
 
 //-----------------------------------------------------------------------------

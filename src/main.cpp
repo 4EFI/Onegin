@@ -1,8 +1,9 @@
 #include <string.h>
 
-#include "../include/StringProcessing.h"
-#include "../include/StrAlgorithms.h"
-#include "../LOG/LOG.h"
+#include "StringProcessing.h"
+#include "StrAlgorithms.h"
+#include "OptionsCmdLine.h"
+#include "LOG.h"
 
 //-----------------------------------------------------------------------------
 
@@ -19,7 +20,11 @@ int CompReverseSorting (const void * str1, const void * str2);
 
 //-----------------------------------------------------------------------------
 
-int main()
+//char HelpOptionNames[] = {"-h", "/h", "--help", "/?"};
+
+//-----------------------------------------------------------------------------
+
+int main (int argc, char *argv[])
 {   
     FILE* fileIn = NULL;
 
@@ -52,7 +57,9 @@ int main()
 
     PrintLines (fileOut, arrOrigStrs, numLines);
 
-    qsort (arrOrigStrs, numLines, sizeof (StrParams), &CompDirectSorting);
+    //qsort (arrOrigStrs, numLines, sizeof (StrParams), &CompDirectSorting);
+    
+    QuickSort (arrOrigStrs, numLines, sizeof (StrParams), &CompDirectSorting);
 
     PrintLines (fileOut, arrOrigStrs, numLines);
 
@@ -115,14 +122,14 @@ void CopyLines (StrParams strTo[], const StrParams strFrom[], int numLines)
 
 int CompDirectSorting (const void * str1, const void * str2)
 {
-    return strcmp ( ((StrParams*)str1)->str, ((StrParams*)str2)->str );
+    return strcmp ( ((const StrParams*)str1)->str, ((const StrParams*)str2)->str );
 }
 
 //-----------------------------------------------------------------------------
 
 int CompReverseSorting (const void * str1, const void * str2)
 {
-    return StrReverseCmp ( ((StrParams*)str1)->str, ((StrParams*)str2)->str );
+    return StrReverseCmp ( ((const StrParams*)str1)->str, ((const StrParams*)str2)->str );
 }
 
 //-----------------------------------------------------------------------------

@@ -200,12 +200,12 @@ int StrReverseCmp (const char* str1, const char* str2)
     assert (str2 != NULL);
     //}
 
-    int len1 = strlen (str1);
-    int len2 = strlen (str2);
+    size_t len1 = strlen (str1);
+    size_t len2 = strlen (str2);
     
-    int lenMin = std::min (len1, len2);
+    size_t lenMin = std::min (len1, len2);
 
-    for (int i = 1; i <= lenMin; i++)
+    for (size_t i = 1; i <= lenMin; i++)
     {        
         if      (str1[len1 - i] > str2[len2 - i]) return  1;
         else if (str1[len1 - i] < str2[len2 - i]) return -1;

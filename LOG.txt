@@ -1,0 +1,32 @@
+02|         src/StrAlgorithms.cpp:126: fileSize = 10
+01|     src/StrAlgorithms.cpp:242: Num = 2
+01|     src/StrAlgorithms.cpp:250: 'bf'
+01|     src/StrAlgorithms.cpp:272: Begin Arr = 2; End Arr = 1
+02|         src/StrAlgorithms.cpp:242: Num = 1
+02|         src/StrAlgorithms.cpp:272: Begin Arr = 1; End Arr = 0
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 10
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+End of Log!
