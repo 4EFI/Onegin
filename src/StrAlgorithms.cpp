@@ -1,6 +1,6 @@
 //#define NLOG
 
-#include "../include/StrAlgorithm.h"
+#include "../include/StrAlgorithms.h"
 #include "../LOG/LOG.h"
 
 #include <stdio.h>

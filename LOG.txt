@@ -1,199 +1,600 @@
-02|         src/StrAlgorithm.cpp:124: fileSize = 15
-End of Log!
-02|         src/StrAlgorithm.cpp:128: fileSize = 15
-01|     src/StrAlgorithm.cpp:99: 15
-01|     src/StrAlgorithm.cpp:100: 15
-End of Log!
-02|         src/StrAlgorithm.cpp:128: fileSize = 15
-01|     src/StrAlgorithm.cpp:99: 15
-01|     src/StrAlgorithm.cpp:100: 15
-End of Log!
-02|         src/StrAlgorithm.cpp:133: fileSize = 15
-01|     src/StrAlgorithm.cpp:101: '.' - -1450171760
-01|     src/StrAlgorithm.cpp:101: '.' - -1041376962
-01|     src/StrAlgorithm.cpp:101: 'v' - -1041376962
-01|     src/StrAlgorithm.cpp:101: 'l' - -1041376962
-01|     src/StrAlgorithm.cpp:101: 'a' - -1041376962
-01|     src/StrAlgorithm.cpp:101: 'd' - -1041376962
-01|     src/StrAlgorithm.cpp:101: '' - -1041376962
-01|     src/StrAlgorithm.cpp:101: '
-' - -1041376962
-01|     src/StrAlgorithm.cpp:101: ' ' - -1041376962
-01|     src/StrAlgorithm.cpp:101: ' ' - -1041376962
-01|     src/StrAlgorithm.cpp:101: 'a' - -1041376962
-01|     src/StrAlgorithm.cpp:101: 'b' - -1041376962
-01|     src/StrAlgorithm.cpp:101: '.' - -1041376962
-01|     src/StrAlgorithm.cpp:101: '.' - -1041376962
-01|     src/StrAlgorithm.cpp:101: '.' - -1041376962
-01|     src/StrAlgorithm.cpp:104: 15
-01|     src/StrAlgorithm.cpp:105: 15
-End of Log!
-02|         src/StrAlgorithm.cpp:133: fileSize = 15
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: 'v' - 118
-01|     src/StrAlgorithm.cpp:101: 'l' - 108
-01|     src/StrAlgorithm.cpp:101: 'a' - 97
-01|     src/StrAlgorithm.cpp:101: 'd' - 100
-01|     src/StrAlgorithm.cpp:101: '' - 13
-01|     src/StrAlgorithm.cpp:101: '
-' - 10
-01|     src/StrAlgorithm.cpp:101: ' ' - 32
-01|     src/StrAlgorithm.cpp:101: ' ' - 32
-01|     src/StrAlgorithm.cpp:101: 'a' - 97
-01|     src/StrAlgorithm.cpp:101: 'b' - 98
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:104: 15
-01|     src/StrAlgorithm.cpp:105: 15
-End of Log!
-02|         src/StrAlgorithm.cpp:133: fileSize = 13
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: 'v' - 118
-01|     src/StrAlgorithm.cpp:101: 'l' - 108
-01|     src/StrAlgorithm.cpp:101: 'a' - 97
-01|     src/StrAlgorithm.cpp:101: 'd' - 100
-01|     src/StrAlgorithm.cpp:101: '' - 13
-01|     src/StrAlgorithm.cpp:101: '
-' - 10
-01|     src/StrAlgorithm.cpp:101: 'a' - 97
-01|     src/StrAlgorithm.cpp:101: 'b' - 98
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:101: '.' - 46
-01|     src/StrAlgorithm.cpp:104: 13
-01|     src/StrAlgorithm.cpp:105: 13
-End of Log!
-02|         src/StrAlgorithm.cpp:138: fileSize = 13
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: 'v' - 118
-01|     src/StrAlgorithm.cpp:106: 'l' - 108
-01|     src/StrAlgorithm.cpp:106: 'a' - 97
-01|     src/StrAlgorithm.cpp:106: 'd' - 100
-01|     src/StrAlgorithm.cpp:106: '' - 13
-01|     src/StrAlgorithm.cpp:106: '
-' - 10
-01|     src/StrAlgorithm.cpp:106: 'a' - 97
-01|     src/StrAlgorithm.cpp:106: 'b' - 98
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:109: 13
-01|     src/StrAlgorithm.cpp:110: 13
-End of Log!
-02|         src/StrAlgorithm.cpp:138: fileSize = 13
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: 'v' - 118
-01|     src/StrAlgorithm.cpp:106: 'l' - 108
-01|     src/StrAlgorithm.cpp:106: 'a' - 97
-01|     src/StrAlgorithm.cpp:106: 'd' - 100
-01|     src/StrAlgorithm.cpp:106: '' - 13
-01|     src/StrAlgorithm.cpp:106: '
-' - 10
-01|     src/StrAlgorithm.cpp:106: 'a' - 97
-01|     src/StrAlgorithm.cpp:106: 'b' - 98
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:109: 13
-01|     src/StrAlgorithm.cpp:110: 13
-End of Log!
-End of Log!
-02|         src/StrAlgorithm.cpp:138: fileSize = 13
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: 'v' - 118
-01|     src/StrAlgorithm.cpp:106: 'l' - 108
-01|     src/StrAlgorithm.cpp:106: 'a' - 97
-01|     src/StrAlgorithm.cpp:106: 'd' - 100
-01|     src/StrAlgorithm.cpp:106: '' - 13
-01|     src/StrAlgorithm.cpp:106: '
-' - 10
-01|     src/StrAlgorithm.cpp:106: 'a' - 97
-01|     src/StrAlgorithm.cpp:106: 'b' - 98
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:106: '.' - 46
-01|     src/StrAlgorithm.cpp:109: 13
-01|     src/StrAlgorithm.cpp:110: 13
-End of Log!
-02|         src/StrAlgorithm.cpp:134: fileSize = 13
-01|     src/StrAlgorithm.cpp:102: '.' - 46
-01|     src/StrAlgorithm.cpp:102: '.' - 46
-01|     src/StrAlgorithm.cpp:102: 'v' - 118
-01|     src/StrAlgorithm.cpp:102: 'l' - 108
-01|     src/StrAlgorithm.cpp:102: 'a' - 97
-01|     src/StrAlgorithm.cpp:102: 'd' - 100
-01|     src/StrAlgorithm.cpp:102: '' - 13
-01|     src/StrAlgorithm.cpp:102: '
-' - 10
-01|     src/StrAlgorithm.cpp:102: 'a' - 97
-01|     src/StrAlgorithm.cpp:102: 'b' - 98
-01|     src/StrAlgorithm.cpp:102: '.' - 46
-01|     src/StrAlgorithm.cpp:102: '.' - 46
-01|     src/StrAlgorithm.cpp:102: '.' - 46
-01|     src/StrAlgorithm.cpp:105: 13
-01|     src/StrAlgorithm.cpp:106: 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-00| src/main.cpp:38: ..vlad
-ab...
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 13
-End of Log!
 02|         src/StrAlgorithm.cpp:126: fileSize = 196183
 End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 196183
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
 End of Log!
-02|         src/StrAlgorithm.cpp:126: fileSize = 196183
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+End of Log!
+02|         src/StrAlgorithms.cpp:126: fileSize = 196183
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
+01|     src/main.cpp:87: uu
 End of Log!

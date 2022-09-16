@@ -1,8 +1,15 @@
 #include <string.h>
 
 #include "../include/StringProcessing.h"
-#include "../include/StrAlgorithm.h"
+#include "../include/StrAlgorithms.h"
 #include "../LOG/LOG.h"
+//-----------------------------------------------------------------------------
+
+bool OpenFile (FILE** file, const char* fileName, 
+                            const char* typeOpen, 
+                            const char* errorOpenning = "An error during opening file...\n");
+
+void PrintLines (FILE* file, int numLines, StrParams* arrStrs);
 
 //-----------------------------------------------------------------------------
 
@@ -20,39 +27,70 @@ int main()
     UnitTestsFGets(unitTests, sizeof(unitTests) / sizeof(char*), "UnitTests.txt");
     */
 
-    char fileName[] = "Hamlet.txt";
+    FILE* fileIn = NULL;
 
-    FILE *file = fopen (fileName, "r");
-
-    if (!file)
-    {
-        printf ("An error during opening file...\n");
-    }
+    if ( !OpenFile (&fileIn, "Hamlet.txt", "r") ) return -1;
 
     char* str = NULL;
 
-    ReadAllFile (file, &str);
+    ReadAllFile (fileIn, &str);
 
     StrParams* arrStrs = NULL;
-    int numStrs = DivideStr (str, &arrStrs);
+    int numLines = DivideStr (str, &arrStrs);
 
-    TrimStrings (arrStrs, numStrs);
+    TrimStrings (arrStrs, numLines);
 
-    BubbleSortStrings (arrStrs, numStrs);
+    BubbleSortStrings (arrStrs, numLines);
 
-    FILE* fileOut = fopen ("_.txt", "w");
+    FILE* fileOut = NULL;
 
-    // print_lines()
-    for (int i = 0; i < numStrs; i++)
-    {
-        fprintf (fileOut, "%d) '%s'\n", i + 1, arrStrs[i].str);
-    }
+    if ( !OpenFile (&fileOut, "fileOut.txt", "w") ) return -1;
 
-    fclose (file);
+    PrintLines (fileOut, numLines, arrStrs);
+
+    fclose (fileIn);
+    fclose (fileOut);
 
     return 0;
 }
 
 //-----------------------------------------------------------------------------
 
+bool OpenFile (FILE** file, const char* fileName, 
+                            const char* typeOpen, 
+                            const char* errorOpenning)
+{
+    *file = fopen (fileName, typeOpen);
 
+    if ( !(*file) )
+    {
+        printf ("%s", errorOpenning);
+        
+        return 0; 
+    }
+
+    return 1;
+}   
+
+//-----------------------------------------------------------------------------
+
+void PrintLines (FILE* file, int numLines, StrParams* arrStrs)
+{
+    $LOG_LVL_UP
+    
+    int pos = 0;
+    
+    for (int i = 0; i < numLines; i++)
+    {
+        if ( arrStrs[i].str[0] == '\0' )
+        {
+            continue;
+        }
+
+        pos++;
+        
+        fprintf (file, "%d) %s\n", pos, arrStrs[i].str);
+    }
+}
+
+//-----------------------------------------------------------------------------
