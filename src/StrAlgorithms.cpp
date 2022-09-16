@@ -215,15 +215,19 @@ void TrimStrings (StrParams arrStrs[], int numStrs, const char* ignoredSymbols)
 
 //-----------------------------------------------------------------------------
 
-void BubbleSortStrings (StrParams arrStrs[], int numStrs)
+void BubbleSort (void * arr, size_t numStrs, size_t size, int (*comparator)(const void * arr1, const void * arr2))
 {
-    for (int i = 0; i < numStrs; i++)
+    $LOG_LVL_UP
+    
+    LOG ("Arr = %lld; %lld", arr, (char*)arr);
+    
+    for (size_t i = 0; i < numStrs; i++)
     {
-        for (int j = 0; j < numStrs - i - 1; j++)
+        for (size_t j = 0; j < numStrs - i - 1; j++)
         {
-            if ( strcmp (arrStrs[j].str, arrStrs[j + 1].str) > 0 )
-            {
-                std::swap (arrStrs[j], arrStrs[j + 1]);
+            if ( comparator (arr + j * size, arr + (j + 1) * size) > 0 )
+            {            
+                Swap (arr + j * size, arr + (j + 1) * size, size);
             }
         }
     }
@@ -231,3 +235,19 @@ void BubbleSortStrings (StrParams arrStrs[], int numStrs)
 
 //-----------------------------------------------------------------------------
 
+void Swap (void * a, void * b, size_t size)
+{
+    char * str1 = (char*)a;
+    char * str2 = (char*)b;
+    char temp = '\0';
+
+    for (size_t i = 0; i < size; i++)
+    {
+        temp = str1[i];
+
+        str1[i] = str2[i];
+        str2[i] = temp;
+    }
+}
+
+//-----------------------------------------------------------------------------

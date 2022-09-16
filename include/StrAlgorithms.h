@@ -5,10 +5,9 @@
 
 //-----------------------------------------------------------------------------
 
-// StrParams str = {0};
 struct StrParams
 {
-    char* str = NULL; // C++??
+    char* str = NULL;
     int   len = 0;
 };
 
@@ -33,7 +32,9 @@ void TrimStrings (StrParams arrStrs[], int numStrs, const char *ignoredSymbols =
 
 int RemoveIgnoredSyms (char** str, int iBegin, int iEnd);
 
-void BubbleSortStrings (StrParams arrStrs[], int numStrs);
+void BubbleSort (void * arr, size_t numStrs, size_t size, int (*comparator)(const void * arr1, const void * arr2));
+
+void Swap (void * a, void * b, size_t size);
 
 //-----------------------------------------------------------------------------
 

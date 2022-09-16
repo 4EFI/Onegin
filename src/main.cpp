@@ -3,30 +3,24 @@
 #include "../include/StringProcessing.h"
 #include "../include/StrAlgorithms.h"
 #include "../LOG/LOG.h"
+
 //-----------------------------------------------------------------------------
 
 bool OpenFile (FILE** file, const char* fileName, 
                             const char* typeOpen, 
                             const char* errorOpenning = "An error during opening file...\n");
 
-void PrintLines (FILE* file, int numLines, StrParams* arrStrs);
+void PrintLines (FILE* file, StrParams* arrStrs, int numLines);
+
+void CopyLines (StrParams strTo[], const StrParams strFrom[], int numLines);
+
+int CompDirectSorting  (const void * str1, const void * str2);
+int CompReverseSorting (const void * str1, const void * str2);
 
 //-----------------------------------------------------------------------------
 
 int main()
-{
-    /* Unit tests
-    const char* unitTests[] = {"Vlados\n",
-                               "Sanya\n",
-                               "Ded32\n",
-                               "\n",
-                               "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\n",
-                               "0123456789012345678901234567890123456789012345678901234567890123#"};
-
-
-    UnitTestsFGets(unitTests, sizeof(unitTests) / sizeof(char*), "UnitTests.txt");
-    */
-
+{   
     FILE* fileIn = NULL;
 
     if ( !OpenFile (&fileIn, "Hamlet.txt", "r") ) return -1;
@@ -40,13 +34,27 @@ int main()
 
     TrimStrings (arrStrs, numLines);
 
-    BubbleSortStrings (arrStrs, numLines);
+    StrParams arrOrigStrs[numLines] = {};
+
+    CopyLines (arrOrigStrs, arrStrs, numLines);
 
     FILE* fileOut = NULL;
 
     if ( !OpenFile (&fileOut, "fileOut.txt", "w") ) return -1;
 
-    PrintLines (fileOut, numLines, arrStrs);
+    BubbleSort (arrStrs, numLines, sizeof (StrParams), &CompDirectSorting);
+
+    PrintLines (fileOut, arrStrs, numLines);
+
+    BubbleSort (arrStrs, numLines, sizeof (StrParams), &CompReverseSorting);
+
+    PrintLines (fileOut, arrStrs, numLines);
+
+    PrintLines (fileOut, arrOrigStrs, numLines);
+
+    qsort (arrOrigStrs, numLines, sizeof (StrParams), &CompDirectSorting);
+
+    PrintLines (fileOut, arrOrigStrs, numLines);
 
     fclose (fileIn);
     fclose (fileOut);
@@ -74,7 +82,7 @@ bool OpenFile (FILE** file, const char* fileName,
 
 //-----------------------------------------------------------------------------
 
-void PrintLines (FILE* file, int numLines, StrParams* arrStrs)
+void PrintLines (FILE* file, StrParams* arrStrs, int numLines)
 {
     $LOG_LVL_UP
     
@@ -89,8 +97,32 @@ void PrintLines (FILE* file, int numLines, StrParams* arrStrs)
 
         pos++;
         
-        fprintf (file, "%d) %s\n", pos, arrStrs[i].str);
+        fprintf (file, "%4d) \"%s\"\n", pos, arrStrs[i].str);
     }
+}
+
+//-----------------------------------------------------------------------------
+
+void CopyLines (StrParams strTo[], const StrParams strFrom[], int numLines)
+{
+    for (int i = 0; i < numLines; i++)
+    {
+        strTo[i] = strFrom[i];
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+int CompDirectSorting (const void * str1, const void * str2)
+{
+    return strcmp ( ((StrParams*)str1)->str, ((StrParams*)str2)->str );
+}
+
+//-----------------------------------------------------------------------------
+
+int CompReverseSorting (const void * str1, const void * str2)
+{
+    return StrReverseCmp ( ((StrParams*)str1)->str, ((StrParams*)str2)->str );
 }
 
 //-----------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #ifndef STRING_PROCESSING
 #define STRING_PROCESSING
 
-//#define NDEBUG
+#include "../LOG/LOG.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,14 +30,15 @@ char StrNullPtr[] = "Pointer cannot be null!";
 
 //-----------------------------------------------------------------------------
 
-int   StrLen  (const char* str);
-void  Puts    (const char* str);
-char* StrChr  (      char* str,          char  symbol);
-void  StrCpy  (      char* str_to, const char* str_from);
-void  StrNCpy (      char* str_to, const char* str_from, int n);
-void  StrCat  (      char* str_to, const char* str_from);
-void  StrNCat (      char* str_to, const char* str_from, int n);
-int   StrCmp  (const char* str1,   const char* str2);
+int   StrLen        (const char* str);
+void  Puts          (const char* str);
+char* StrChr        (      char* str,          char  symbol);
+void  StrCpy        (      char* str_to, const char* str_from);
+void  StrNCpy       (      char* str_to, const char* str_from, int n);
+void  StrCat        (      char* str_to, const char* str_from);
+void  StrNCat       (      char* str_to, const char* str_from, int n);
+int   StrCmp        (const char* str1,   const char* str2);
+int   StrReverseCmp (const char* str1,   const char* str2);
 
 char* FGets (char *str, int n, FILE *file);
 
@@ -85,8 +86,6 @@ char* StrChr (char* str, char symbol)
     //}
 
     int length = StrLen (str);
-
-    if (Debug) printf ("%d: length = %d\n", __LINE__, length);
 
     for (int i = 0; i < length; i++)
     {
@@ -184,8 +183,36 @@ int StrCmp (const char* str1, const char* str2)
         if      (str1[i] > str2[i]) return  1;
         else if (str1[i] < str2[i]) return -1;
 
-        if (str1[i] == '\0') return 0;
+        if (str1[i] == '\0' || str2[2] == '\0') return 0;
     }
+
+    return 0;
+}
+
+//-----------------------------------------------------------------------------
+
+int StrReverseCmp (const char* str1, const char* str2)
+{
+    $LOG_LVL_UP
+    
+    //{ ASSERT
+    assert (str1 != NULL);
+    assert (str2 != NULL);
+    //}
+
+    int len1 = strlen (str1);
+    int len2 = strlen (str2);
+    
+    int lenMin = std::min (len1, len2);
+
+    for (int i = 1; i <= lenMin; i++)
+    {        
+        if      (str1[len1 - i] > str2[len2 - i]) return  1;
+        else if (str1[len1 - i] < str2[len2 - i]) return -1;
+    }
+
+    if (len1 < len2) return -1;
+    if (len1 > len2) return  1;
 
     return 0;
 }

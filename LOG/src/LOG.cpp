@@ -65,6 +65,8 @@ FILE* OpenLogFile (const char* path)
 
     LogFile = fopen (path, "a");
 
+    setvbuf (LogFile, NULL, _IONBF, 0);
+
     return LogFile;
 }
 
