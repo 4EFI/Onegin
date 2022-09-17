@@ -9,6 +9,9 @@ struct String
 {
     char* str;
     int   len;
+
+    int numLeftIgnSyms;
+    int numRightIgnSyms;
 };
 
 //-----------------------------------------------------------------------------
@@ -16,24 +19,17 @@ struct String
 struct Text
 {
 private:
-    FILE * file;
-    
     char * allStr;
     long int strSize;
 
-    String * lines;
-    long int numLines;
-
-    long int SetStr();
-
 public:
-    Text() {file = stdin, allStr = NULL, strSize = 0, lines = NULL, numLines = 0;}
-    
-    bool     SetFile (const char * fileName, const char * typeOpen = "r");
-    long int SetLines();
+    String * lines;
+    long int numLines; 
 
-    String * GetLines   () { return lines;    }
-    long int GetNumLines() { return numLines; }
+     Text() {allStr = NULL, strSize = 0, lines = NULL, numLines = 0;}
+    ~Text();
+
+    long int SetLines(FILE* file);
 };
 
 //-----------------------------------------------------------------------------
@@ -45,6 +41,9 @@ const char IgnoredSymbols[] = " .,()[]{}<>\\/|~`!?:;-'";
 int DivideStr (char* str, String** arrStrs);
 
 int GetNumStrs (const char *str);
+
+int NumLeftIgnoredSyms  (const char* str, const char *ignoredSymbols = IgnoredSymbols);
+int NumRightIgnoredSyms (const char* str, const char *ignoredSymbols = IgnoredSymbols);
 
 int TrimLeftIgnoredSyms  (char** str, const char *ignoredSymbols = IgnoredSymbols);
 int TrimRightIgnoredSyms (char** str, const char *ignoredSymbols = IgnoredSymbols);
@@ -58,9 +57,11 @@ void QuickSort  (void * arr, size_t num, size_t size, int (*comparator)(const vo
 
 void Swap (void * a, void * b, size_t size);
 
-void CopyLines (String strTo[], const String strFrom[], int numLines);
+void CopyLines (String** strTo, const String* strFrom, int numLines);
 
 void PrintLines (FILE* file, String* arrStrs, int numLines);
+
+int StrReverseCmp (const char* str1, size_t len1, const char* str2, size_t len2);
 
 //-----------------------------------------------------------------------------
 

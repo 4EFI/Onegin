@@ -30,15 +30,14 @@ char StrNullPtr[] = "Pointer cannot be null!";
 
 //-----------------------------------------------------------------------------
 
-int   StrLen        (const char* str);
-void  Puts          (const char* str);
-char* StrChr        (      char* str,          char  symbol);
-void  StrCpy        (      char* str_to, const char* str_from);
-void  StrNCpy       (      char* str_to, const char* str_from, int n);
-void  StrCat        (      char* str_to, const char* str_from);
-void  StrNCat       (      char* str_to, const char* str_from, int n);
-int   StrCmp        (const char* str1,   const char* str2);
-int   StrReverseCmp (const char* str1,   const char* str2);
+int   StrLen  (const char* str);
+void  Puts    (const char* str);
+char* StrChr  (      char* str,          char  symbol);
+void  StrCpy  (      char* str_to, const char* str_from);
+void  StrNCpy (      char* str_to, const char* str_from, int n);
+void  StrCat  (      char* str_to, const char* str_from);
+void  StrNCat (      char* str_to, const char* str_from, int n);
+int   StrCmp  (const char* str1,   const char* str2);
 
 char* FGets (char *str, int n, FILE *file);
 
@@ -185,34 +184,6 @@ int StrCmp (const char* str1, const char* str2)
 
         if (str1[i] == '\0' || str2[2] == '\0') return 0;
     }
-
-    return 0;
-}
-
-//-----------------------------------------------------------------------------
-
-int StrReverseCmp (const char* str1, const char* str2)
-{
-    $LOG_LVL_UP
-    
-    //{ ASSERT
-    assert (str1 != NULL);
-    assert (str2 != NULL);
-    //}
-
-    size_t len1 = strlen (str1);
-    size_t len2 = strlen (str2);
-    
-    size_t lenMin = std::min (len1, len2);
-
-    for (size_t i = 1; i <= lenMin; i++)
-    {        
-        if      (str1[len1 - i] > str2[len2 - i]) return  1;
-        else if (str1[len1 - i] < str2[len2 - i]) return -1;
-    }
-
-    if (len1 < len2) return -1;
-    if (len1 > len2) return  1;
 
     return 0;
 }

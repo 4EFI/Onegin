@@ -14,27 +14,32 @@
 // Text
 //-----------------------------------------------------------------------------
 
-bool Text::SetFile (const char * fileName, const char * typeOpen)
+Text::~Text()
 {
-    return OpenFile (&file, fileName, typeOpen);
+    if (allStr != NULL) free (allStr);
+    if (lines  != NULL) free (lines);
+
+    allStr = NULL;
+    lines  = NULL;
 }
 
 //-----------------------------------------------------------------------------
 
-long int Text::SetStr()
+long int Text::SetLines(FILE* file)
 {
-    strSize = ReadAllFile (file, &allStr);
+    //{ ASSERT
+    assert (file != NULL);
+    //}
     
-    return strSize;
-}
-
-//-----------------------------------------------------------------------------
-
-long int Text::SetLines()
-{
-    if (allStr == NULL) SetStr();    
+    if (allStr == NULL) strSize = ReadAllFile (file, &allStr);    
     
     if (allStr != NULL) numLines = DivideStr (allStr, &lines);
+
+    for (int i = 0; i < numLines; i++)
+    {
+        lines[i].numLeftIgnSyms  = NumLeftIgnoredSyms  ( lines[i].str );
+        lines[i].numRightIgnSyms = NumRightIgnoredSyms ( lines[i].str );
+    }
 
     return numLines;
 }
@@ -113,6 +118,54 @@ int GetNumStrs (const char *str)
 
 //-----------------------------------------------------------------------------
 
+int NumLeftIgnoredSyms (const char* str, const char *ignoredSymbols)
+{
+    //{ ASSERT
+    assert (str            != NULL);
+    assert (ignoredSymbols != NULL);
+    //}
+
+    int numLeftIgnSyms = 0;
+
+    for (int i = 0; ; i++)
+    {
+        // If end of str
+        if (str[i] == '\0') break;
+
+        if ( !strchr (ignoredSymbols, str[i]) ) break;
+
+        numLeftIgnSyms++;
+    }
+
+    return numLeftIgnSyms;
+}
+
+//-----------------------------------------------------------------------------
+
+int NumRightIgnoredSyms (const char* str, const char *ignoredSymbols)
+{
+    //{ ASSERT
+    assert (str            != NULL);
+    assert (ignoredSymbols != NULL);
+    //}
+
+    int lenStr = 0, lastStr = 0;
+
+    for (int i = 0; ; i++)
+    {
+        // If end of str
+        if (str[i] == '\0') break;
+
+        if ( !strchr (ignoredSymbols, str[i]) ) lastStr = i;
+
+        lenStr++;
+    }
+
+    return lenStr - (lastStr + 1);
+}
+
+//-----------------------------------------------------------------------------
+
 int TrimLeftIgnoredSyms (char** str, const char *ignoredSymbols)
 {
     $LOG_LVL_UP
@@ -123,19 +176,7 @@ int TrimLeftIgnoredSyms (char** str, const char *ignoredSymbols)
     assert (ignoredSymbols != NULL);
     //}
 
-    int numIgnoredSyms = 0;
-
-    // char* str = *str_ptr;
-
-    for (int i = 0; ; i++)
-    {
-        // If end of str
-        if ((*str)[i] == '\0') break;
-
-        if ( !strchr (ignoredSymbols, (*str)[i]) ) break;
-
-        numIgnoredSyms++;
-    }
+    int numIgnoredSyms = NumLeftIgnoredSyms (*str, ignoredSymbols);
 
    *str += numIgnoredSyms;
 
@@ -161,10 +202,7 @@ int TrimRightIgnoredSyms (char **str, const char *ignoredSymbols)
         // If end of str
         if ((*str)[i] == '\0') break;
 
-        if ( !strchr (ignoredSymbols, (*str)[i]) )
-        {
-            lastStr = i;
-        }
+        if ( !strchr (ignoredSymbols, (*str)[i]) ) lastStr = i;
 
         lenStr++;
     }
@@ -200,6 +238,10 @@ void BubbleSort ( void * arr, size_t num, size_t size, int (*comparator)(const v
 {
     $LOG_LVL_UP
     
+    //{ ASSERT
+    assert (arr != NULL);
+    //}
+
     for (size_t i = 0; i < num; i++)
     {
         for (size_t j = 0; j < num - i - 1; j++)
@@ -217,6 +259,10 @@ void BubbleSort ( void * arr, size_t num, size_t size, int (*comparator)(const v
 void QuickSort ( void * arr, size_t num, size_t size, int (*comparator)(const void * arr1, const void * arr2) )
 {
     $LOG_LVL_UP
+
+    //{ ASSERT
+    assert (arr != NULL);
+    //}
     
     size_t beginArr = 0;
     size_t endArr   = num - 1;
@@ -253,6 +299,11 @@ void QuickSort ( void * arr, size_t num, size_t size, int (*comparator)(const vo
 
 void Swap (void * a, void * b, size_t size)
 {
+    //{ ASSERT
+    assert (a != NULL);
+    assert (b != NULL);
+    //}
+    
     char * str1 = (char*)a;
     char * str2 = (char*)b;
     char   temp = '\0';
@@ -268,11 +319,18 @@ void Swap (void * a, void * b, size_t size)
 
 //-----------------------------------------------------------------------------
 
-void CopyLines (String strTo[], const String strFrom[], int numLines)
+void CopyLines (String** strTo, const String* strFrom, int numLines)
 {
+    //{ ASSERT
+    assert (strTo   != NULL);
+    assert (strFrom != NULL);
+    //}
+    
+    *strTo = (String*)calloc (numLines, sizeof (String)); 
+    
     for (int i = 0; i < numLines; i++)
     {
-        strTo[i] = strFrom[i];
+        (*strTo)[i] = strFrom[i];
     }
 }
 
@@ -281,6 +339,11 @@ void CopyLines (String strTo[], const String strFrom[], int numLines)
 void PrintLines (FILE* file, String* arrStrs, int numLines)
 {
     $LOG_LVL_UP
+
+    //{ ASSERT
+    assert (file    != NULL);
+    assert (arrStrs != NULL);
+    //}
     
     int pos = 0;
     
@@ -295,6 +358,34 @@ void PrintLines (FILE* file, String* arrStrs, int numLines)
         
         fprintf (file, "%4d) \"%s\"\n", pos, arrStrs[i].str);
     }
+}
+
+//-----------------------------------------------------------------------------
+
+int StrReverseCmp (const char* str1, size_t len1, const char* str2, size_t len2)
+{
+    $LOG_LVL_UP
+    
+    //{ ASSERT
+    assert (str1 != NULL);
+    assert (str2 != NULL);
+    //}
+
+    if (len1 <= 0) len1 = strlen (str1);
+    if (len2 <= 0) len2 = strlen (str2);
+    
+    size_t lenMin = std::min (len1, len2);
+
+    for (size_t i = 1; i <= lenMin; i++)
+    {        
+        if      (str1[len1 - i] > str2[len2 - i]) return  1;
+        else if (str1[len1 - i] < str2[len2 - i]) return -1;
+    }
+
+    if (len1 < len2) return -1;
+    if (len1 > len2) return  1;
+
+    return 0;
 }
 
 //-----------------------------------------------------------------------------
