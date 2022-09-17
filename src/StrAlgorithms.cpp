@@ -1,17 +1,48 @@
 //#define NLOG
 
 #include "StrAlgorithms.h"
+#include "FileAlgorithms.h"
 #include "LOG.h"
 
 #include <stdio.h>
+#include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
 #include <algorithm>
 
+// Text
 //-----------------------------------------------------------------------------
 
-int DivideStr (char* str, StrParams** arrStrs)
+bool Text::SetFile (const char * fileName, const char * typeOpen)
+{
+    return OpenFile (&file, fileName, typeOpen);
+}
+
+//-----------------------------------------------------------------------------
+
+long int Text::SetStr()
+{
+    strSize = ReadAllFile (file, &allStr);
+    
+    return strSize;
+}
+
+//-----------------------------------------------------------------------------
+
+long int Text::SetLines()
+{
+    if (allStr == NULL) SetStr();    
+    
+    if (allStr != NULL) numLines = DivideStr (allStr, &lines);
+
+    return numLines;
+}
+
+//-----------------------------------------------------------------------------
+// End Text 
+
+int DivideStr (char* str, String** arrStrs)
 {
     $LOG_LVL_UP
 
@@ -21,7 +52,7 @@ int DivideStr (char* str, StrParams** arrStrs)
 
     int numStrs = GetNumStrs (str);
 
-    *arrStrs = (StrParams*) calloc (sizeof (StrParams), numStrs);
+    *arrStrs = (String*) calloc (sizeof (String), numStrs);
 
     int pos = 0, nowStr = 0;
 
@@ -82,55 +113,6 @@ int GetNumStrs (const char *str)
 
 //-----------------------------------------------------------------------------
 
-long int ReadAllFile (FILE* file, char** str)
-{
-    $LOG_LVL_UP
-
-    // ASSERT
-    assert (file != NULL);
-    assert (str  != NULL);
-    //
-
-    long int fileSize = GetFileSize (file);
-
-    *str = (char*) calloc (sizeof (char), fileSize + 1);
-
-    long int rightRead = fread (*str, sizeof (char), fileSize, file);
-
-    if (rightRead < fileSize)
-        realloc ( str, sizeof (char) * (rightRead + 1) ); // Windows specific, \r remove
-
-    (*str)[rightRead] = '\0';
-
-    return rightRead;
-}
-
-//-----------------------------------------------------------------------------
-
-long int GetFileSize (FILE* file) //fstat
-{
-    $LOG_LVL_UP
-
-    //{ ASSERT
-    assert (file != NULL);
-    //}
-
-    long int curPos = ftell (file);
-
-    fseek (file, 0, SEEK_END);
-
-    long int fileSize = ftell (file);
-
-    fseek (file, curPos, SEEK_SET);
-
-    FLOG ("fileSize = %d", fileSize);
-
-    return fileSize;
-}
-
-//-----------------------------------------------------------------------------
-
-// str_ptr
 int TrimLeftIgnoredSyms (char** str, const char *ignoredSymbols)
 {
     $LOG_LVL_UP
@@ -196,7 +178,7 @@ int TrimRightIgnoredSyms (char **str, const char *ignoredSymbols)
 
 //-----------------------------------------------------------------------------
 
-void TrimStrings (StrParams arrStrs[], int numStrs, const char* ignoredSymbols)
+void TrimStrings (String arrStrs[], int numStrs, const char* ignoredSymbols)
 {
     $LOG_LVL_UP
 
@@ -273,7 +255,7 @@ void Swap (void * a, void * b, size_t size)
 {
     char * str1 = (char*)a;
     char * str2 = (char*)b;
-    char temp = '\0';
+    char   temp = '\0';
 
     for (size_t i = 0; i < size; i++)
     {
@@ -281,6 +263,37 @@ void Swap (void * a, void * b, size_t size)
 
         str1[i] = str2[i];
         str2[i] = temp;
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+void CopyLines (String strTo[], const String strFrom[], int numLines)
+{
+    for (int i = 0; i < numLines; i++)
+    {
+        strTo[i] = strFrom[i];
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+void PrintLines (FILE* file, String* arrStrs, int numLines)
+{
+    $LOG_LVL_UP
+    
+    int pos = 0;
+    
+    for (int i = 0; i < numLines; i++)
+    {
+        if ( arrStrs[i].str[0] == '\0' )
+        {
+            continue;
+        }
+
+        pos++;
+        
+        fprintf (file, "%4d) \"%s\"\n", pos, arrStrs[i].str);
     }
 }
 
