@@ -7,7 +7,7 @@
 
 struct String
 {
-    char* str;
+    char* str; 
     int   len;
 
     int numLeftIgnSyms;
