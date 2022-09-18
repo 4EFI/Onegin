@@ -14,40 +14,69 @@
 // Text
 //-----------------------------------------------------------------------------
 
-Text::~Text()
+void TextInit(Text* text)
 {
-    if (allStr != NULL) free (allStr);
-    if (lines  != NULL) free (lines);
-
-    allStr = NULL;
-    lines  = NULL;
+    text->isCopyStr   = true;
+    text->isCopyLines = true;
+    
+    text->allStr = NULL; 
+    text->strSize = 0; 
+    text->lines = NULL;
+    text->numLines = 0;   
 }
 
 //-----------------------------------------------------------------------------
 
-long int Text::SetLines(FILE* file)
+void TextDestr (Text* text)
+{
+    if (!text->isCopyStr)   free (text->allStr);
+    if (!text->isCopyLines) free (text->lines);
+}
+
+//-----------------------------------------------------------------------------
+
+long int TextSetFileStr (Text* text, FILE* file)
 {
     //{ ASSERT
     assert (file != NULL);
+    assert (text != NULL);
+    //}   
+
+    text->strSize = ReadAllFile (file, &(text->allStr)); 
+
+    if (text->allStr != NULL) text->isCopyStr = false;
+
+    return text->strSize;
+}
+
+//-----------------------------------------------------------------------------
+
+long int TextSetFileLines (Text* text, FILE* file)
+{
+    //{ ASSERT
+    assert (file != NULL);
+    assert (text != NULL);
     //}
     
-    if (allStr == NULL) strSize = ReadAllFile (file, &allStr);    
+    if (text->allStr == NULL) text->strSize  = TextSetFileStr (text, file);    
     
-    if (allStr != NULL) numLines = DivideStr (allStr, &lines);
+    if (text->allStr != NULL) text->numLines = DivideStr (text->allStr, &(text->lines));
 
-    for (int i = 0; i < numLines; i++)
+    for (int i = 0; i < text->numLines; i++)
     {
-        lines[i].numLeftIgnSyms  = NumLeftIgnoredSyms  ( lines[i].str );
-        lines[i].numRightIgnSyms = NumRightIgnoredSyms ( lines[i].str );
+        text->lines[i].numLeftIgnSyms  = NumLeftIgnoredSyms  ( text->lines[i].str );
+        text->lines[i].numRightIgnSyms = NumRightIgnoredSyms ( text->lines[i].str );
     }
 
-    return numLines;
+    text->isCopyLines = false;
+
+    return text->numLines;
 }
 
 //-----------------------------------------------------------------------------
 // End Text 
 
-int DivideStr (char* str, String** arrStrs)
+int DivideStr (char* str, String** arrStrs, char symNewLine)
 {
     $LOG_LVL_UP
 
@@ -55,32 +84,32 @@ int DivideStr (char* str, String** arrStrs)
     assert (str != NULL);
     //}
 
-    int numStrs = GetNumStrs (str);
+    int numStrs = GetNumStrs (str, symNewLine);
 
     *arrStrs = (String*) calloc (sizeof (String), numStrs);
 
-    int pos = 0, nowStr = 0;
+    int pos = 0, curStr = 0;
 
     for (int i = 0; ; i++)
     {
-        if (str[i] == '\n' || str[i] == '\0')
+        if (str[i] == symNewLine || str[i] == '\0')
         {
-            (*arrStrs)[nowStr].str = &str[i - pos];
+            (*arrStrs)[curStr].str = &str[i - pos];
             // +1 for '\0'
-            (*arrStrs)[nowStr].len = pos + 1;
+            (*arrStrs)[curStr].len = pos + 1;
 
             // If end of str
             if (str[i] == '\0') break;
 
-            (*arrStrs)[nowStr].str[pos] = '\0';
+            (*arrStrs)[curStr].str[pos] = '\0';
             // If \r
-            if (pos > 0 && (*arrStrs)[nowStr].str[pos - 1] == '\r')
+            if (pos > 0 && (*arrStrs)[curStr].str[pos - 1] == '\r')
             {
-                (*arrStrs)[nowStr].str[pos - 1] = '\0';
+                (*arrStrs)[curStr].str[pos - 1] = '\0';
             }
 
             pos = 0;
-            nowStr++;
+            curStr++;
 
             continue;
         }
@@ -93,7 +122,7 @@ int DivideStr (char* str, String** arrStrs)
 
 //-----------------------------------------------------------------------------
 
-int GetNumStrs (const char *str)
+int GetNumStrs (const char *str, char symNewLine)
 {
     $LOG_LVL_UP
 
@@ -105,11 +134,11 @@ int GetNumStrs (const char *str)
 
     for (int i = 0; ; i++)
     {
-        if (str[i] == '\n' || str[i] == '\0')
+        if (str[i] == symNewLine || str[i] == '\0')
         {
             numStrs++;
 
-            if (str[i] == '\0') break;
+            if (str[i] == '\0') break; 
         }
     }
 
@@ -166,75 +195,7 @@ int NumRightIgnoredSyms (const char* str, const char *ignoredSymbols)
 
 //-----------------------------------------------------------------------------
 
-int TrimLeftIgnoredSyms (char** str, const char *ignoredSymbols)
-{
-    $LOG_LVL_UP
-
-    //{ ASSERT
-    assert ( str           != NULL);
-    assert (*str           != NULL);
-    assert (ignoredSymbols != NULL);
-    //}
-
-    int numIgnoredSyms = NumLeftIgnoredSyms (*str, ignoredSymbols);
-
-   *str += numIgnoredSyms;
-
-    return numIgnoredSyms;
-}
-
-//-----------------------------------------------------------------------------
-
-int TrimRightIgnoredSyms (char **str, const char *ignoredSymbols)
-{
-    $LOG_LVL_UP
-
-    //{ ASSERT
-    assert ( str           != NULL);
-    assert (*str           != NULL);
-    assert (ignoredSymbols != NULL);
-    //}
-
-    int lenStr = 0, lastStr = 0;
-
-    for (int i = 0; ; i++)
-    {
-        // If end of str
-        if ((*str)[i] == '\0') break;
-
-        if ( !strchr (ignoredSymbols, (*str)[i]) ) lastStr = i;
-
-        lenStr++;
-    }
-
-    int numIgnoredSyms = lenStr - (lastStr + 1);
-
-    (*str)[lenStr - numIgnoredSyms] = '\0';
-
-    return numIgnoredSyms;
-}
-
-//-----------------------------------------------------------------------------
-
-void TrimStrings (String arrStrs[], int numStrs, const char* ignoredSymbols)
-{
-    $LOG_LVL_UP
-
-    //{ ASSERT
-    assert (arrStrs        != NULL);
-    assert (ignoredSymbols != NULL);
-    //}
-
-    for (int i = 0; i < numStrs; i++)
-    {
-        TrimLeftIgnoredSyms  (&arrStrs[i].str, ignoredSymbols);
-        TrimRightIgnoredSyms (&arrStrs[i].str, ignoredSymbols);
-    }
-}
-
-//-----------------------------------------------------------------------------
-
-void BubbleSort ( void * arr, size_t num, size_t size, int (*comparator)(const void * arr1, const void * arr2) )
+void BubbleSort (void * arr, size_t num, size_t size, int (*comparator)(const void * arr1, const void * arr2))
 {
     $LOG_LVL_UP
     

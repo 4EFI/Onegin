@@ -18,37 +18,34 @@ struct String
 
 struct Text
 {
-private:
+    bool isCopyStr;
+    bool isCopyLines; 
+
     char * allStr;
     long int strSize;
-
-public:
+    
     String * lines;
     long int numLines; 
-
-     Text() {allStr = NULL, strSize = 0, lines = NULL, numLines = 0;}
-    ~Text();
-
-    long int SetLines(FILE* file);
 };
 
+void TextInit  (Text* text);
+void TextDestr (Text* text);
+
+long int TextSetFileStr   (Text* text, FILE* file);
+long int TextSetFileLines (Text* text, FILE* file);
+
 //-----------------------------------------------------------------------------
 
-const char IgnoredSymbols[] = " .,()[]{}<>\\/|~`!?:;-'";
+static const char IgnoredSymbols[] = " .,()[]{}<>\\/|~`!?:;-'";
 
 //-----------------------------------------------------------------------------
 
-int DivideStr (char* str, String** arrStrs);
+int DivideStr (char* str, String** arrStrs, char symNewLine = '\n');
 
-int GetNumStrs (const char *str);
+int GetNumStrs (const char *str, char symNewLine = '\n');
 
 int NumLeftIgnoredSyms  (const char* str, const char *ignoredSymbols = IgnoredSymbols);
 int NumRightIgnoredSyms (const char* str, const char *ignoredSymbols = IgnoredSymbols);
-
-int TrimLeftIgnoredSyms  (char** str, const char *ignoredSymbols = IgnoredSymbols);
-int TrimRightIgnoredSyms (char** str, const char *ignoredSymbols = IgnoredSymbols);
-
-void TrimStrings (String arrStrs[], int numStrs, const char *ignoredSymbols = IgnoredSymbols);
 
 int RemoveIgnoredSyms (char** str, int iBegin, int iEnd);
 

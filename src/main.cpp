@@ -22,14 +22,14 @@ int main (int argc, char *argv[])
     FILE* fileIn = NULL;
     if ( !OpenFile (&fileIn, "Hamlet.txt", "r") ) return -1;
     
-    Text hamletText;
+    Text hamletText = {0};
+    TextInit (&hamletText);
 
-    hamletText.SetLines (fileIn);
-
-    //TrimStrings (arrStrs, numLines);
+    TextSetFileLines (&hamletText, fileIn);
 
     Text hamletTextCopy = hamletText;
     CopyLines (&hamletTextCopy.lines, hamletText.lines, hamletText.numLines);
+    hamletText.isCopyStr = true;
 
     FILE* fileOut = NULL;
     if ( !OpenFile (&fileOut, "fileOut.txt", "w") ) return -1;
@@ -45,8 +45,6 @@ int main (int argc, char *argv[])
                 hamletText.numLines, 
                 sizeof (String), 
                 &CompReverseSorting);
-
-    LOG ("asdf");
 
     PrintLines (fileOut, hamletText.lines, hamletText.numLines);
 
@@ -66,6 +64,9 @@ int main (int argc, char *argv[])
                &CompDirectSorting);
 
     PrintLines (fileOut, hamletText.lines, hamletText.numLines);
+
+    TextDestr (&hamletText);
+    TextDestr (&hamletTextCopy);
 
     fclose (fileIn);
     fclose (fileOut);
