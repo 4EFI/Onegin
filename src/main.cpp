@@ -1,6 +1,5 @@
 #include <string.h>
 
-#include "StringProcessing.h"
 #include "FileAlgorithms.h"
 #include "StrAlgorithms.h"
 #include "Comparators.h"

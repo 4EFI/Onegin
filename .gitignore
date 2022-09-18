@@ -2,3 +2,4 @@ lib/
 LOG/lib/
 LOG.txt
 main.exe
+include/StringProcessing.h 
