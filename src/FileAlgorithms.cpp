@@ -86,7 +86,7 @@ long int ReadAllFile (FILE* file, char** str)
     long int rightRead = fread (*str, sizeof (char), fileSize, file);
 
     if (rightRead < fileSize)
-        realloc ( str, sizeof (char) * (rightRead + 1) ); // Windows specific, \r remove
+        realloc (str, sizeof (char) * (rightRead + 1)); // Windows specific, \r remove
 
     (*str)[rightRead] = '\0';
 

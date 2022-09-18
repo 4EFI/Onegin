@@ -19,9 +19,9 @@ void TextInit(Text* text)
     text->isCopyStr   = true;
     text->isCopyLines = true;
     
-    text->buffer = NULL; 
-    text->strSize = 0; 
-    text->lines = NULL;
+    text->buffer   = NULL; 
+    text->strSize  = 0; 
+    text->lines    = NULL;
     text->numLines = 0;   
 }
 
@@ -64,8 +64,8 @@ long int TextSetFileLines (Text* text, FILE* file)
 
     for (int i = 0; i < text->numLines; i++)
     {
-        text->lines[i].numLeftIgnSyms  = NumLeftIgnoredSyms  ( text->lines[i].str );
-        text->lines[i].numRightIgnSyms = NumRightIgnoredSyms ( text->lines[i].str );
+        text->lines[i].numLeftIgnSyms  = NumLeftIgnoredSyms  (text->lines[i].str);
+        text->lines[i].numRightIgnSyms = NumRightIgnoredSyms (text->lines[i].str);
     }
 
     text->isCopyLines = false;
@@ -86,7 +86,7 @@ int DivideStr (char* str, String** arrStrs, char symNewLine)
 
     int numStrs = GetNumStrs (str, symNewLine);
 
-    *arrStrs = (String*) calloc (sizeof (String), numStrs);
+    *arrStrs = (String*)calloc (sizeof (String), numStrs);
 
     int pos = 0, curStr = 0;
 
@@ -147,7 +147,7 @@ int GetNumStrs (const char *str, char symNewLine)
 
 //-----------------------------------------------------------------------------
 
-int NumLeftIgnoredSyms (const char* str, const char *ignoredSymbols)
+int NumLeftIgnoredSyms (const char* str, const char* ignoredSymbols)
 {
     //{ ASSERT
     assert (str            != NULL);
@@ -171,7 +171,7 @@ int NumLeftIgnoredSyms (const char* str, const char *ignoredSymbols)
 
 //-----------------------------------------------------------------------------
 
-int NumRightIgnoredSyms (const char* str, const char *ignoredSymbols)
+int NumRightIgnoredSyms (const char* str, const char* ignoredSymbols)
 {
     //{ ASSERT
     assert (str            != NULL);
@@ -185,7 +185,7 @@ int NumRightIgnoredSyms (const char* str, const char *ignoredSymbols)
         // If end of str
         if (str[i] == '\0') break;
 
-        if ( !strchr (ignoredSymbols, str[i]) ) lastStr = i;
+        if (!strchr (ignoredSymbols, str[i])) lastStr = i;
 
         lenStr++;
     }
@@ -195,7 +195,7 @@ int NumRightIgnoredSyms (const char* str, const char *ignoredSymbols)
 
 //-----------------------------------------------------------------------------
 
-void BubbleSort (void * arr, size_t num, size_t size, int (*comparator)(const void * arr1, const void * arr2))
+void BubbleSort (void* arr, size_t num, size_t size, int (*comparator)(const void* arr1, const void* arr2))
 {
     $LOG_LVL_UP
     
@@ -207,9 +207,9 @@ void BubbleSort (void * arr, size_t num, size_t size, int (*comparator)(const vo
     {
         for (size_t j = 0; j < num - i - 1; j++)
         {
-            if ( comparator ( (char*)arr + j * size, (char*)arr + (j + 1) * size) > 0 )
+            if (comparator ((char*)arr + j * size, (char*)arr + (j + 1) * size) > 0)
             {            
-                Swap ( (char*)arr + j * size, (char*)arr + (j + 1) * size, size );
+                Swap ((char*)arr + j * size, (char*)arr + (j + 1) * size, size);
             }
         }
     }
@@ -217,7 +217,7 @@ void BubbleSort (void * arr, size_t num, size_t size, int (*comparator)(const vo
 
 //-----------------------------------------------------------------------------
 
-void QuickSort ( void * arr, size_t num, size_t size, int (*comparator)(const void * arr1, const void * arr2) )
+void QuickSort (void* arr, size_t num, size_t size, int (*comparator)(const void* arr1, const void* arr2))
 {
     $LOG_LVL_UP
 
@@ -228,7 +228,7 @@ void QuickSort ( void * arr, size_t num, size_t size, int (*comparator)(const vo
     size_t beginArr = 0;
     size_t endArr   = num - 1;
 
-    void * middle = (char*)arr + (num / 2) * size;
+    void* middle = (char*)arr + (num / 2) * size;
 
     while (beginArr <= endArr)
     {    
@@ -245,29 +245,29 @@ void QuickSort ( void * arr, size_t num, size_t size, int (*comparator)(const vo
         if (beginArr <= endArr) 
         {
             // Swap (arr[beginArr], arr[endArr])
-            Swap ( (char*)arr + beginArr * size, (char*)arr + endArr * size, size );
+            Swap ((char*)arr + beginArr * size, (char*)arr + endArr * size, size);
 
             beginArr++;
             endArr--;
         }
     } 
 
-    if (endArr   > 0      ) QuickSort ( (char*)arr,                   endArr + 1,        size, comparator );
-    if (beginArr < num - 1) QuickSort ( (char*)arr + beginArr * size, num    - beginArr, size, comparator );
+    if (endArr   > 0      ) QuickSort ((char*)arr,                   endArr + 1,        size, comparator);
+    if (beginArr < num - 1) QuickSort ((char*)arr + beginArr * size, num    - beginArr, size, comparator);
 }
 
 //-----------------------------------------------------------------------------
 
-void Swap (void * a, void * b, size_t size)
+void Swap (void* a, void* b, size_t size)
 {
     //{ ASSERT
     assert (a != NULL);
     assert (b != NULL);
     //}
     
-    char * str1 = (char*)a;
-    char * str2 = (char*)b;
-    char   temp = '\0';
+    char* str1 = (char*)a;
+    char* str2 = (char*)b;
+    char  temp = '\0';
 
     for (size_t i = 0; i < size; i++)
     {

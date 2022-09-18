@@ -12,10 +12,10 @@
 
 //-----------------------------------------------------------------------------
 
-int main (int argc, char *argv[])
+int main (int argc, char* argv[])
 {
     FILE* fileIn = NULL;
-    if ( !OpenFile (&fileIn, "Hamlet.txt", "r") ) return -1;
+    if (!OpenFile (&fileIn, "Hamlet.txt", "r")) return -1;
     
     Text hamletText = {0};
     TextInit (&hamletText);
@@ -27,7 +27,7 @@ int main (int argc, char *argv[])
     hamletText.isCopyStr = true;
 
     FILE* fileOut = NULL;
-    if ( !OpenFile (&fileOut, "fileOut.txt", "w") ) return -1;
+    if (!OpenFile (&fileOut, "fileOut.txt", "w")) return -1;
 
     BubbleSort (hamletText.lines, 
                 hamletText.numLines, 

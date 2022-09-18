@@ -10,6 +10,6 @@ bool OpenFile (FILE** file, const char* fileName,
 long int GetFileSize         (FILE* file);
 long int GetFileSizeFromStat (FILE* file);
 
-long int ReadAllFile (FILE* file, char **str);
+long int ReadAllFile (FILE* file, char** str);
 
 #endif

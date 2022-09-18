@@ -1,4 +1,4 @@
-./lib/
-./LOG/lib/
-./LOG.txt
-./main.exe
+lib/
+LOG/lib/
+LOG.txt
+main.exe
