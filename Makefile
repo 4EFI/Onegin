@@ -29,10 +29,12 @@ all : $(OBJ) $(LOG_OBJ)
 
 #main
 $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp
+	mkdir -p $(@D)
 	$(CC) $(IFLAGS) $(CFLAGS) -c $^ -o $@
 
 #LOG
 $(LOG_OBJ_DIR)%.o : $(LOG_SRC_DIR)%.cpp
+	mkdir -p $(@D)
 	$(CC) $(IFLAGS) $(CFLAGS) -c $^ -o $@
 
 #Options command line
