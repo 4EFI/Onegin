@@ -21,7 +21,7 @@ struct Text
     bool isCopyStr;
     bool isCopyLines; 
 
-    char * allStr;
+    char * buffer;
     long int strSize;
     
     String * lines;

@@ -19,7 +19,7 @@ void TextInit(Text* text)
     text->isCopyStr   = true;
     text->isCopyLines = true;
     
-    text->allStr = NULL; 
+    text->buffer = NULL; 
     text->strSize = 0; 
     text->lines = NULL;
     text->numLines = 0;   
@@ -29,7 +29,7 @@ void TextInit(Text* text)
 
 void TextDestr (Text* text)
 {
-    if (!text->isCopyStr)   free (text->allStr);
+    if (!text->isCopyStr)   free (text->buffer);
     if (!text->isCopyLines) free (text->lines);
 }
 
@@ -42,9 +42,9 @@ long int TextSetFileStr (Text* text, FILE* file)
     assert (text != NULL);
     //}   
 
-    text->strSize = ReadAllFile (file, &(text->allStr)); 
+    text->strSize = ReadAllFile (file, &(text->buffer)); 
 
-    if (text->allStr != NULL) text->isCopyStr = false;
+    if (text->buffer != NULL) text->isCopyStr = false;
 
     return text->strSize;
 }
@@ -58,9 +58,9 @@ long int TextSetFileLines (Text* text, FILE* file)
     assert (text != NULL);
     //}
     
-    if (text->allStr == NULL) text->strSize  = TextSetFileStr (text, file);    
+    if (text->buffer == NULL) text->strSize  = TextSetFileStr (text, file);    
     
-    if (text->allStr != NULL) text->numLines = DivideStr (text->allStr, &(text->lines));
+    if (text->buffer != NULL) text->numLines = DivideStr (text->buffer, &(text->lines));
 
     for (int i = 0; i < text->numLines; i++)
     {
