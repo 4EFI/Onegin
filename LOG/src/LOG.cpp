@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <time.h>
 
 #ifdef _WIN32
     #include <io.h>
@@ -41,7 +42,7 @@ FunctionsCallTree::~FunctionsCallTree()
 //-----------------------------------------------------------------------------
 
 void _LOG (FILE* file, const char fileName[], const int line, const char str[], ...)
-{
+{   
     va_list arg = {};
     va_start (arg, str);
 
@@ -61,6 +62,12 @@ void _LOG (FILE* file, const char fileName[], const int line, const char str[], 
 
 FILE* OpenLogFile (const char* path)
 {   
+    //struct tm = 
+    
+    PutsSymbols (LogFile, '-', 10);
+
+    PutsSymbols (LogFile, '-', 10);
+    
     atexit (&FinishLog);
 
     LogFile = fopen (path, "a");
@@ -108,3 +115,10 @@ void PutsSpaces (FILE* file, int numSpaces)
 
 //-----------------------------------------------------------------------------
 
+void PutsSymbols (FILE* file, char sym, int numSyms)
+{
+    for (int i = 0; i < numSyms; i++)
+    {
+        fputc (sym, file);
+    }
+}

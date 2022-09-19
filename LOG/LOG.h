@@ -65,7 +65,8 @@ bool IsTTY (FILE* file);
 
 void FinishLog();
 
-void PutsSpaces (FILE* file, int numSpaces);
+void PutsSpaces  (FILE* file, /*Space*/ int numSpaces);
+void PutsSymbols (FILE* file, char sym, int numSyms);
 
 //-----------------------------------------------------------------------------
 
