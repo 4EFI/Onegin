@@ -14,7 +14,7 @@
 int main (int argc, char* argv[])
 {
     FILE* fileIn = NULL;
-    if (!OpenFile (&fileIn, "Hamlet.txt", "r")) return -1;
+    if (!OpenFile (&fileIn, "Test.txt", "r")) return -1;
     
     Text hamletText = {0};
     TextInit (&hamletText);

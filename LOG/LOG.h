@@ -68,6 +68,8 @@ void FinishLog();
 void PutsSpaces  (FILE* file, /*Space*/ int numSpaces);
 void PutsSymbols (FILE* file, char sym, int numSyms);
 
+void PrintCurTime (FILE* file);
+
 //-----------------------------------------------------------------------------
 
 #define LOG_INFO(file, fileName, line) \

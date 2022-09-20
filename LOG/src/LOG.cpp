@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
 #include <time.h>
 
 #ifdef _WIN32
@@ -62,17 +63,18 @@ void _LOG (FILE* file, const char fileName[], const int line, const char str[], 
 
 FILE* OpenLogFile (const char* path)
 {   
-    //struct tm = 
-    
-    PutsSymbols (LogFile, '-', 10);
-
-    PutsSymbols (LogFile, '-', 10);
-    
     atexit (&FinishLog);
 
     LogFile = fopen (path, "a");
 
     setvbuf (LogFile, NULL, _IONBF, 0);
+
+    PutsSymbols (LogFile, '-', 20);
+
+    PrintCurTime (LogFile);
+
+    PutsSymbols (LogFile, '-', 20);
+    fputc ('\n', LogFile);
 
     return LogFile;
 }
@@ -122,3 +124,22 @@ void PutsSymbols (FILE* file, char sym, int numSyms)
         fputc (sym, file);
     }
 }
+
+//-----------------------------------------------------------------------------
+
+void PrintCurTime (FILE* file)
+{
+    time_t curTime;
+    struct tm* timeinfo;
+
+    time (&curTime);
+    timeinfo = localtime (&curTime);
+
+    char* str = asctime (timeinfo);
+
+    str[strlen(str) - 1] = '\0';
+
+    fprintf (LogFile, "%s", str);
+}
+
+//-----------------------------------------------------------------------------
